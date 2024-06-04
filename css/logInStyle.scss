@@ -1,0 +1,303 @@
+$main-color: #415334;
+$sec-color: #f5f6f8;
+$black-color: #0c0c0c;
+$danger-color: #8e1717;
+
+@font-face {
+  font-family: "Italiana";
+  src: url(../assets/fonts/Italiana-Regular.ttf);
+}
+@font-face {
+  font-family: "Itim";
+  src: url(../assets/fonts/Itim-Regular.ttf);
+}
+
+body {
+  height: 100dvh;
+  font-family: "Itim";
+  background-image: linear-gradient(hsla(0, 0%, 0%, 0.2), hsla(0, 0%, 0%, 0.2)),
+    url(../assets/imgs/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  main,
+  section {
+    height: 100%;
+  }
+}
+
+.sec-1 {
+  .container {
+    margin: auto;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    .login-card {
+      max-height: 650px;
+      max-width: 1000px;
+      background-color: #f5f6f8;
+      border-radius: 24px;
+      padding: 0;
+      overflow: hidden;
+      .img {
+        max-height: 650px;
+        padding: 0;
+        img {
+          max-height: 650px;
+          object-fit: cover;
+          display: block;
+          width: 100%;
+        }
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        padding-inline: 55px;
+        // padding-block: 80px;
+        gap: 8px;
+        justify-content: center;
+        h1 {
+          font-size: 56px;
+          color: $main-color;
+          font-family: "Italiana";
+          margin: 0;
+        }
+        h2 {
+          font-size: 32px;
+          margin: 0;
+          span {
+            color: $main-color;
+          }
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 0px;
+          button {
+            margin-top: 12px;
+            border: 1px solid $main-color;
+            font-size: 24px;
+            color: $sec-color;
+            background-color: $main-color;
+            border-radius: 8px;
+            transition: all 0.2s;
+            &:active {
+              background-color: $sec-color;
+              color: $main-color;
+              border: 1px solid $main-color;
+            }
+            &:hover {
+              filter: brightness(0.9);
+            }
+          }
+          div {
+            margin-top: -8px;
+            position: relative;
+            label {
+              position: relative;
+              top: 10px;
+              left: 12px;
+              background-color: $sec-color;
+              padding-inline: 12px;
+              border-radius: 4px;
+              font-size: 14px;
+            }
+            input {
+              display: block;
+              width: 100%;
+              max-height: 40px;
+              background-color: transparent;
+              border: 1px solid $main-color;
+              border-radius: 8px;
+              padding: 8px;
+              &:focus {
+                outline: none;
+                border: 2px solid $main-color;
+              }
+            }
+          }
+        }
+      }
+      .icons {
+        display: flex;
+        justify-content: space-evenly;
+
+        .icon {
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          background-color: $main-color;
+          border-radius: 8px;
+          img {
+            width: 150%;
+            display: block;
+          }
+        }
+      }
+      .other-options {
+        text-align: center;
+        p {
+          margin: 0;
+          font-size: 12px;
+          a {
+            font-size: 16px;
+            text-decoration: none;
+          }
+          .login-word {
+            color: $main-color;
+          }
+          .reset-word {
+            color: $danger-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .sec-1 {
+    .container {
+      .login-card {
+        .form {
+          padding-inline: 24px;
+          h1 {
+            font-size: 50px;
+          }
+          h2 {
+            font-size: 28px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 999px) {
+  .sec-1 {
+    .container {
+      .login-card {
+        .img {
+          position: relative;
+          z-index: 0;
+          img {
+            position: absolute;
+            width: 150%;
+            left: 50%;
+          }
+        }
+        .form {
+          position: relative;
+          z-index: 1;
+          padding-block: 40px;
+          padding-inline: 80px;
+          h1 {
+            font-size: 56px;
+          }
+          h2 {
+            font-size: 28px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .sec-1 {
+    .container {
+      .login-card {
+        .img {
+          position: relative;
+          z-index: 0;
+          img {
+            position: absolute;
+            width: 100%;
+            left: 15%;
+          }
+        }
+        .form {
+          position: relative;
+          z-index: 1;
+          padding-block: 40px;
+          padding-inline: 80px;
+          h1 {
+            font-size: 52px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 574px) {
+  .sec-1 {
+    .container {
+      padding-inline: 10vw;
+      padding-block: 20px;
+      .login-card {
+        .img {
+          position: relative;
+          z-index: 0;
+          img {
+            position: absolute;
+            width: 135%;
+            left: 15%;
+          }
+        }
+        .form {
+          position: relative;
+          z-index: 1;
+          padding-block: 40px;
+          padding-inline: 40px;
+          h1 {
+            font-size: 36px;
+          }
+          h2 {
+            font-size: 20px;
+          }
+          form {
+            button {
+              font-size: 14px;
+            }
+            div {
+              label {
+                padding-inline: 12px;
+                border-radius: 4px;
+                font-size: 12px;
+              }
+              input {
+                max-height: 30px;
+                padding: 4px;
+              }
+            }
+          }
+        }
+        .icons {
+          .icon {
+            width: 30px;
+            height: 30px;
+            padding: 8px;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        .other-options {
+          p {
+            font-size: 10px;
+            a {
+              font-size: 12px;
+              text-decoration: none;
+            }
+            .login-word {
+              color: $main-color;
+            }
+            .reset-word {
+              color: $danger-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
