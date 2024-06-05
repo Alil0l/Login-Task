@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Italiana";
   src: url(../assets/fonts/Italiana-Regular.ttf);
@@ -97,10 +98,13 @@ body section {
   padding-inline: 12px;
   border-radius: 4px;
   font-size: 14px;
+  z-index: 4;
 }
 .sec-1 .container .login-card .form form div input {
   display: block;
   width: 100%;
+  position: relative;
+  z-index: 1;
   max-height: 40px;
   background-color: transparent;
   border: 1px solid #415334;
@@ -110,6 +114,42 @@ body section {
 .sec-1 .container .login-card .form form div input:focus {
   outline: none;
   border: 2px solid #415334;
+}
+.sec-1 .container .login-card .form form .wrong-input {
+  position: relative;
+  z-index: 2;
+}
+.sec-1 .container .login-card .form form .wrong-input input {
+  border: 1px solid #8e1717;
+}
+.sec-1 .container .login-card .form form .wrong-input input:focus {
+  border: 2px solid #8e1717;
+}
+.sec-1 .container .login-card .form form .wrong-input::after {
+  content: "✖";
+  color: #8e1717;
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 50%;
+}
+.sec-1 .container .login-card .form form .correct-input {
+  position: relative;
+  z-index: 2;
+}
+.sec-1 .container .login-card .form form .correct-input input {
+  border: 1px solid #415334;
+}
+.sec-1 .container .login-card .form form .correct-input input:focus {
+  border: 2px solid #415334;
+}
+.sec-1 .container .login-card .form form .correct-input::after {
+  content: "✔";
+  color: #415334;
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 50%;
 }
 .sec-1 .container .login-card .icons {
   display: flex;

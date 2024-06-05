@@ -21,23 +21,28 @@
               <h1>Green Life</h1>
               <h2>Sign up, <span>it's free...</span></h2>
               <form>
-                <div>
+                <div class="">
                   <label for="name">Name:</label>
                   <input type="text" name="name" id="name" />
                 </div>
-                <div>
+                <div class="">
                   <label for="email">Email:</label>
                   <input type="text" name="email" id="email" />
                 </div>
-                <div>
+                <div class="">
                   <label for="password">Password:</label>
-                  <input type="text" name="password" id="password" />
+                  <input
+                    autocomplete
+                    type="password"
+                    name="password"
+                    id="password"
+                  />
                 </div>
-                <div>
+                <div class="">
                   <label for="phone">Phone:</label>
                   <input type="text" name="phone" id="phone" />
                 </div>
-                <button type="button">Sign Up</button>
+                <button type="button" id="signUp">Sign Up</button>
               </form>
               <div class="icons row">
                 <div class="icon">
@@ -66,6 +71,6 @@
       </section>
     </main>
     <!-- Link Js -->
-    <script src="./script/script.js"></script>
+    <script src="./script/index.js"></script>
   </body>
 </html>
