@@ -24,31 +24,42 @@
         text-align: center;
       }
       h1 {
-        font-size: 7.5vw;
+        font-size: 3.5vw;
         color: white;
         font-family: "Rubik Wet Paint";
       }
       h2 {
-        font-size: 5.5vw;
+        font-size: 2.5vw;
         color: white;
         font-family: "Rubik Wet Paint";
       }
       p {
-        font-size: 4.5vw;
+        font-size: 1.5vw;
         color: white;
         font-family: "Rubik Wet Paint";
       }
       span {
-        font-size: 4.5vw;
-        color: #415334;
+        font-size: 1.5vw;
+        color: #8e1717;
         font-family: "Rubik Wet Paint";
+      }
+      button {
+        width: 30%;
+        min-height: 60px;
+        font-size: calc(14px + 0.25vw);
+        font-weight: bolder;
+        color: #8e1717;
+        background-color: #f5f6f8;
+        border-radius: 8px;
+        border: 1px solid #8e1717;
       }
     </style>
   </head>
   <body>
     <p>Welcome, <span class="name"></span></p>
-    <h1>Currently, we are growing</h1>
+    <h1>Currently, Our plants are growing</h1>
     <h2>ComIngSooN,,,</h2>
+    <button onclick="signOut()">Sign Out</button>
     <script>
       (function loadSaved() {
         document.addEventListener("DOMContentLoaded", () => {
@@ -58,6 +69,9 @@
           }
         });
       })();
+      function signOut() {
+        window.location.href = "../login.html";
+      }
     </script>
   </body>
 </html>
