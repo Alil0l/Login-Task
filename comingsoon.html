@@ -17,18 +17,47 @@
         height: 100dvh;
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background-image: url(./assets/imgs/bg.jpg);
+        text-align: center;
       }
       h1 {
         font-size: 7.5vw;
         color: white;
         font-family: "Rubik Wet Paint";
       }
+      h2 {
+        font-size: 5.5vw;
+        color: white;
+        font-family: "Rubik Wet Paint";
+      }
+      p {
+        font-size: 4.5vw;
+        color: white;
+        font-family: "Rubik Wet Paint";
+      }
+      span {
+        font-size: 4.5vw;
+        color: #415334;
+        font-family: "Rubik Wet Paint";
+      }
     </style>
   </head>
   <body>
-    <h1>ComIngSooN,,,</h1>
+    <p>Welcome, <span class="name"></span></p>
+    <h1>Currently, we are growing</h1>
+    <h2>ComIngSooN,,,</h2>
+    <script>
+      (function loadSaved() {
+        document.addEventListener("DOMContentLoaded", () => {
+          const loggedIn = localStorage.getItem("loggedInUser");
+          if (loggedIn) {
+            document.querySelector(".name").innerHTML = loggedIn;
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

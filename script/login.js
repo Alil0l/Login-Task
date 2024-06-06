@@ -18,6 +18,7 @@ function validateLogIn() {
     usersData.forEach(function (e) {
         if (loginEmail.value === e.email && loginPassword.value === e.password) {
             correctLogin.isOk = true;
+            localStorage.setItem("loggedInUser", e.name);
         }
     });
     if (correctLogin.isOk == true) {
@@ -25,7 +26,7 @@ function validateLogIn() {
         popUp.style.top = "90%";
         setTimeout(function () {
             popUp.style.top = "140%";
-            window.location.href = "../login.html";
+            window.location.href = "../comingsoon.html";
         }, 2000);
     }
     else {
