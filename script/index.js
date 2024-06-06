@@ -52,6 +52,7 @@ signUp.addEventListener("click", function () {
     signUp.toggleAttribute("disabled");
     // Validate unique email
     validateUniqueEmail();
+    isUnique == false ? userEmail.parentElement.classList.remove("correct-input") : 0;
     isUnique == false ? userEmail.parentElement.classList.add("wrong-input") : 0;
     setTimeout(function () {
         var _a, _b, _c, _d;
