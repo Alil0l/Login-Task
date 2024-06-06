@@ -39,16 +39,9 @@ validator(userPassword, usePass, "password");
 validator(userPhone, usePhone, "phone");
 validator(userEmail, useEmail, "email");
 function validateUniqueEmail() {
-    var _a, _b, _c, _d;
-    isUnique = !usersData.some(function (e) { return e.email === userEmail.value; });
-    if (isUnique) {
-        (_a = userEmail.parentElement) === null || _a === void 0 ? void 0 : _a.classList.remove("wrong-input");
-        (_b = userEmail.parentElement) === null || _b === void 0 ? void 0 : _b.classList.add("correct-input");
-    }
-    else {
-        (_c = userEmail.parentElement) === null || _c === void 0 ? void 0 : _c.classList.add("wrong-input");
-        (_d = userEmail.parentElement) === null || _d === void 0 ? void 0 : _d.classList.remove("correct-input");
-    }
+    isUnique =
+        !usersData.some(function (e) { return e.email === userEmail.value; }) &&
+            userEmail.value != "";
     return isUnique;
 }
 // Signup button actions
@@ -58,6 +51,7 @@ signUp.addEventListener("click", function () {
     // Validate unique email
     validateUniqueEmail();
     setTimeout(function () {
+        var _a, _b, _c, _d;
         var allValid = validationStates.name &&
             validationStates.password &&
             validationStates.phone &&
@@ -86,6 +80,18 @@ signUp.addEventListener("click", function () {
         else {
             popUp.style.top = "90%";
             popUp.innerHTML = "<p>Failed to sign up \u2716</p>";
+            validationStates.name == true
+                ? null
+                : (_a = userName.parentElement) === null || _a === void 0 ? void 0 : _a.classList.add("wrong-input");
+            validationStates.email == true
+                ? null
+                : (_b = userEmail.parentElement) === null || _b === void 0 ? void 0 : _b.classList.add("wrong-input");
+            validationStates.password == true
+                ? null
+                : (_c = userPassword.parentElement) === null || _c === void 0 ? void 0 : _c.classList.add("wrong-input");
+            validationStates.phone == true
+                ? null
+                : (_d = userPhone.parentElement) === null || _d === void 0 ? void 0 : _d.classList.add("wrong-input");
             setTimeout(function () {
                 popUp.style.top = "140%";
             }, 2000);

@@ -53,14 +53,9 @@ validator(userPhone, usePhone, "phone");
 validator(userEmail, useEmail, "email");
 
 function validateUniqueEmail() {
-  isUnique = !usersData.some((e) => e.email === userEmail.value);
-  if (isUnique) {
-    userEmail.parentElement?.classList.remove("wrong-input");
-    userEmail.parentElement?.classList.add("correct-input");
-  } else {
-    userEmail.parentElement?.classList.add("wrong-input");
-    userEmail.parentElement?.classList.remove("correct-input");
-  }
+  isUnique =
+    !usersData.some((e) => e.email === userEmail.value) &&
+    userEmail.value != "";
   return isUnique;
 }
 
@@ -102,6 +97,18 @@ signUp.addEventListener("click", () => {
     } else {
       popUp.style.top = "90%";
       popUp.innerHTML = `<p>Failed to sign up ✖</p>`;
+      validationStates.name == true
+        ? null
+        : userName.parentElement?.classList.add("wrong-input");
+      validationStates.email == true
+        ? null
+        : userEmail.parentElement?.classList.add("wrong-input");
+      validationStates.password == true
+        ? null
+        : userPassword.parentElement?.classList.add("wrong-input");
+      validationStates.phone == true
+        ? null
+        : userPhone.parentElement?.classList.add("wrong-input");
       setTimeout(() => {
         popUp.style.top = "140%";
       }, 2000);
