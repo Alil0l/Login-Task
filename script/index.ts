@@ -69,7 +69,7 @@ signUp.addEventListener("click", () => {
 
   // Validate unique email
   validateUniqueEmail();
-
+  isUnique == false ? userEmail.parentElement?.classList.add("wrong-input") : 0;
   setTimeout(() => {
     const allValid =
       validationStates.name &&
