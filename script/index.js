@@ -95,24 +95,16 @@ signUp.addEventListener("click", function () {
       popUp.innerHTML = "<p>Failed to sign up \u2716</p>";
       validationStates.name == true
         ? null
-        : (_a = userName.parentElement) === null || _a === void 0
-        ? void 0
-        : _a.classList.add("wrong-input");
+        : userName.parentElement.classList.add("wrong-input");
       validationStates.email == true
         ? null
-        : (_b = userEmail.parentElement) === null || _b === void 0
-        ? void 0
-        : _b.classList.add("wrong-input");
+        : userEmail.parentElement.classList.add("wrong-input");
       validationStates.password == true
         ? null
-        : (_c = userPassword.parentElement) === null || _c === void 0
-        ? void 0
-        : _c.classList.add("wrong-input");
+        : userPassword.parentElement.classList.add("wrong-input");
       validationStates.phone == true
         ? null
-        : (_d = userPhone.parentElement) === null || _d === void 0
-        ? void 0
-        : _d.classList.add("wrong-input");
+        : userPhone.parentElement.classList.add("wrong-input");
       setTimeout(function () {
         popUp.style.top = "140%";
       }, 2000);
