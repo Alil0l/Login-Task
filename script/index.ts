@@ -53,9 +53,12 @@ validator(userPhone, usePhone, "phone");
 validator(userEmail, useEmail, "email");
 
 function validateUniqueEmail() {
-  isUnique =
-    !usersData.some((e) => e.email === userEmail.value) &&
-    userEmail.value != "";
+  if (
+    userEmail.value != "" &&
+    !usersData.some((e) => e.email === userEmail.value)
+  ) {
+    isUnique = true;
+  }
   return isUnique;
 }
 

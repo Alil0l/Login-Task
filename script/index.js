@@ -39,9 +39,10 @@ validator(userPassword, usePass, "password");
 validator(userPhone, usePhone, "phone");
 validator(userEmail, useEmail, "email");
 function validateUniqueEmail() {
-    isUnique =
-        !usersData.some(function (e) { return e.email === userEmail.value; }) &&
-            userEmail.value != "";
+    if (userEmail.value != "" &&
+        !usersData.some(function (e) { return e.email === userEmail.value; })) {
+        isUnique = true;
+    }
     return isUnique;
 }
 // Signup button actions
