@@ -85,7 +85,7 @@ signUp.addEventListener("click", function () {
             popUp.innerHTML = "<p>Failed to sign up \u2716</p>";
             validationStates.name == true
                 ? null
-                : (_a = userName.parentElement) === null || _a === void 0 ? void 0 : _a.classList.add("wrong-input");
+               : userName.parentElement.classList.add("wrong-input");
             validationStates.email == true
                 ? null
                 : (_b = userEmail.parentElement) === null || _b === void 0 ? void 0 : _b.classList.add("wrong-input");
