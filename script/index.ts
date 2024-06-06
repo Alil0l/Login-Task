@@ -3,64 +3,115 @@ let userEmail = document.getElementById("email") as HTMLInputElement;
 let userPassword = document.getElementById("password") as HTMLInputElement;
 let userPhone = document.getElementById("phone") as HTMLInputElement;
 let signUp = document.getElementById("signUp") as HTMLButtonElement;
+let popUp = document.querySelector(".popup") as HTMLElement;
+let isUnique: boolean = false;
 let usersData: user[] = [];
+
 type user = {
   name: string;
   email: string;
-  phone: number;
+  phone: string;
   password: string;
 };
-let user: user = { name: "", email: "", phone: 0, password: "" };
+
+let validationStates = {
+  name: false,
+  email: false,
+  password: false,
+  phone: false,
+};
+
 let useName = /^[a-zA-Z0-9_ -]{3,15}$/;
 let usePass = /^[a-zA-Z0-9_ -^]{8,20}$/;
-let useEamil = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+let useEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
 let usePhone = /^(?:\+20|0)?1[0125]\d{8}$/;
-// Validate Data
-// validate on type
-// visual updates
-function validator(input: HTMLInputElement, reg: RegExp) {
+
+// Validating functions
+function validator(
+  input: HTMLInputElement,
+  reg: RegExp,
+  type: keyof typeof validationStates
+) {
   input.addEventListener("input", () => {
-    let temp: string;
-    temp = input.value;
+    let temp: string = input.value;
     if (temp.length < 3 || !reg.test(temp)) {
       input.parentElement?.classList.add("wrong-input");
       input.parentElement?.classList.remove("correct-input");
+      validationStates[type] = false;
     } else {
       input.parentElement?.classList.remove("wrong-input");
       input.parentElement?.classList.add("correct-input");
-    }
-  });
-}
-validator(userName, useName);
-validator(userPassword, usePass);
-validator(userPhone, usePhone);
-validator(userEmail, useEamil);
-userEmail.addEventListener("blur", validateUniqueEmail);
-function validateUniqueEmail() {
-  usersData.forEach((e) => {
-    if (e.email == userEmail.value) {
-      userEmail.parentElement?.classList.add("wrong-input");
-      userEmail.parentElement?.classList.remove("correct-input");
-      alert("this email is already registerd!");
+      validationStates[type] = true;
     }
   });
 }
 
-// Store Data
-// store in database
-// unique values
+// Initializing validators
+validator(userName, useName, "name");
+validator(userPassword, usePass, "password");
+validator(userPhone, usePhone, "phone");
+validator(userEmail, useEmail, "email");
+
+function validateUniqueEmail() {
+  isUnique = !usersData.some((e) => e.email === userEmail.value);
+  if (isUnique) {
+    userEmail.parentElement?.classList.remove("wrong-input");
+    userEmail.parentElement?.classList.add("correct-input");
+  } else {
+    userEmail.parentElement?.classList.add("wrong-input");
+    userEmail.parentElement?.classList.remove("correct-input");
+  }
+  return isUnique;
+}
+
+// Signup button actions
 signUp.addEventListener("click", () => {
-  user.email = userEmail.value;
-  user.name = userName.value;
-  user.password = userPassword.value;
-  user.phone = Number(userPhone.value);
-  usersData.push(user);
-  saveToLocalStorage();
+  signUp.innerHTML = `<img class="rotate" src="./assets/imgs/loading.png" alt="loading">`;
+  signUp.toggleAttribute("disabled");
+
+  // Validate unique email
+  validateUniqueEmail();
+
+  setTimeout(() => {
+    const allValid =
+      validationStates.name &&
+      validationStates.password &&
+      validationStates.phone &&
+      validationStates.email &&
+      isUnique;
+
+    if (allValid) {
+      popUp.style.top = "90%";
+      popUp.innerHTML = `<p>Signed Up Successfully ✔</p>`;
+      const newUser: user = {
+        email: userEmail.value,
+        name: userName.value,
+        password: userPassword.value,
+        phone: userPhone.value,
+      };
+      usersData.push(newUser);
+      saveToLocalStorage();
+      userEmail.value = "";
+      userName.value = "";
+      userPassword.value = "";
+      userPhone.value = "";
+      setTimeout(() => {
+        popUp.style.top = "140%";
+        window.location.href = "../login.html";
+      }, 2000);
+    } else {
+      popUp.style.top = "90%";
+      popUp.innerHTML = `<p>Failed to sign up ✖</p>`;
+      setTimeout(() => {
+        popUp.style.top = "140%";
+      }, 2000);
+    }
+    signUp.innerHTML = "Sign Up";
+    signUp.toggleAttribute("disabled");
+  }, 1500);
 });
 
-// Restore Data
-// from database in login
-// if it is stored
+// Data fetching and saving
 (function loadSaved() {
   document.addEventListener("DOMContentLoaded", () => {
     const storedItems = localStorage.getItem("usersData");

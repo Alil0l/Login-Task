@@ -13,6 +13,7 @@ body {
   background-image: linear-gradient(hsla(0, 0%, 0%, 0.2), hsla(0, 0%, 0%, 0.2)), url(../assets/imgs/bg.jpg);
   background-position: center;
   background-size: cover;
+  overflow: hidden;
 }
 body main,
 body section {
@@ -185,6 +186,40 @@ body section {
 }
 .sec-1 .container .login-card .other-options p .reset-word {
   color: #8e1717;
+}
+
+.rotate {
+  width: 30px;
+  height: 30px;
+  animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: #f5f6f8;
+  color: #0c0c0c;
+  width: 300px;
+  height: 40px;
+  border-radius: 24px;
+  top: 140%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.5s;
+}
+.popup p {
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 1199px) {
