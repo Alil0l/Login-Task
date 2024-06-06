@@ -14,22 +14,26 @@ var usersData = [];
 // Validate login cerdintials
 logIn.addEventListener("click", validateLogIn);
 function validateLogIn() {
+    var correctLogin = { isOk: false };
     usersData.forEach(function (e) {
         if (loginEmail.value === e.email && loginPassword.value === e.password) {
-            popUp.style.top = "90%";
-            popUp.innerHTML = "<p>Logging in now \u2714</p>";
-            setTimeout(function () {
-                popUp.style.top = "140%";
-                window.location.href = "../login.html";
-            }, 2000);
-        }
-        else {
-            popUp.style.top = "90%";
-            popUp.innerHTML = "<p>Email or Password isn't correct \u2716</p>";
-            setTimeout(function () {
-                popUp.style.top = "140%";
-            }, 2000);
+            correctLogin.isOk = true;
         }
     });
+    if (correctLogin.isOk == true) {
+        popUp.innerHTML = "<p>Welcome back \u2714</p>";
+        popUp.style.top = "90%";
+        setTimeout(function () {
+            popUp.style.top = "140%";
+            window.location.href = "../login.html";
+        }, 2000);
+    }
+    else {
+        popUp.innerHTML = "<p>Email or Password isn't correct \u2716</p>";
+        popUp.style.top = "90%";
+        setTimeout(function () {
+            popUp.style.top = "140%";
+        }, 2000);
+    }
 }
 // Show popup with content
