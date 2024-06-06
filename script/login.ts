@@ -34,7 +34,7 @@ function validateLogIn() {
     popUp.style.top = "90%";
     setTimeout(() => {
       popUp.style.top = "140%";
-      window.location.href = "../comingsoon.html";
+      window.location.href = "/Login-Task/comingsoon.html";
     }, 2000);
   } else {
     popUp.innerHTML = `<p>Email or Password isn't correct ✖</p>`;

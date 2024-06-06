@@ -95,7 +95,7 @@ signUp.addEventListener("click", () => {
       userPhone.value = "";
       setTimeout(() => {
         popUp.style.top = "140%";
-        window.location.href = "../login.html";
+        window.location.href = "/Login-Task/login.html";
       }, 2000);
     } else {
       popUp.style.top = "90%";
